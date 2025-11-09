@@ -1,0 +1,38 @@
+# Gorse Configuration
+
+[database]
+cache_store = "redis://redis:6379"
+data_store = "mysql://gorse:gorse_pass@tcp(mysql:3306)/gorse?timeout=30s&parseTime=true"
+
+[master]
+port = 8086
+host = "0.0.0.0"
+http_port = 8088
+http_host = "0.0.0.0"
+n_jobs = 1
+
+[server]
+api_key = ""
+
+[recommend]
+cache_size = 100
+cache_expire = "72h"
+
+[recommend.collaborative]
+enable_index = true
+index_recall = 100
+index_fit_epoch = 100
+model_fit_period = "60m"
+model_search_period = "360m"
+model_search_epoch = 100
+model_search_trials = 10
+
+[recommend.item_neighbors]
+enable_index = true
+index_recall = 100
+index_fit_epoch = 100
+
+[recommend.user_neighbors]
+enable_index = true
+index_recall = 100
+index_fit_epoch = 100
