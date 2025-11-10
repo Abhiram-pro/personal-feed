@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: gorse-recommender
+    env: docker
+    dockerfilePath: ./gorse-deploy/Dockerfile
+    dockerContext: ./gorse-deploy
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: GORSE_API_KEY
+        generateValue: true
+      - key: PORT
+        value: 8087
+    disk:
+      name: gorse-data
+      mountPath: /var/lib/gorse
+      sizeGB: 1
